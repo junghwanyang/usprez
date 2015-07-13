@@ -1,0 +1,1 @@
+This is a project to classify Twitter users by their political ideology.
