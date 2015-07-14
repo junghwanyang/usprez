@@ -25,6 +25,10 @@ rm(path1)
 path3 <- "../data//usprez3.sav" 
 d3 <- read.spss(path3, use.value.labels = F, to.data.frame = T)
 rm(path3)
+
+path3 <- "../data//usprez3.txt" 
+d3 <- read.delim(path3, header = F, sep = "\t")
+rm(path3)
 ```
 
 I found some cell in d1 has some errors (probably because of , or some encoding errors). I merge two variables into one.
