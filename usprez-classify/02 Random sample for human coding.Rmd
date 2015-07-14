@@ -5,13 +5,17 @@ date: "July 13, 2015"
 output: html_document
 ---
 
-Combine d1 and d3 into d13
+For human coding, pick a random sample from the raw data set
 
 ```{r}
-d13 <- rbind(d1, d3)
-rm(d1); rm(d3)
-```
-
 library(dplyr)
 set.seed(7)
-sample_n(temp, 300)
+d13.rdm10k <- sample_n(d13, 10000)
+```
+
+For distribution of the file, export it as .xls file
+
+```{r}
+library(xlsx)
+write.xlsx(d13.rdm10k, file="../data/usprez13-rdm10k.xlsx")
+```
