@@ -1,0 +1,17 @@
+---
+title: "02 Random sample for human coding"
+author: "JungHwan Yang"
+date: "July 13, 2015"
+output: html_document
+---
+
+Combine d1 and d3 into d13
+
+```{r}
+d13 <- rbind(d1, d3)
+rm(d1); rm(d3)
+```
+
+library(dplyr)
+set.seed(7)
+sample_n(temp, 300)
