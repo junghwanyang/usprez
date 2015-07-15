@@ -33,16 +33,16 @@ rm(path3)
 I found some cell in d1 and d3 has some errors (probably because of an encoding error). I merged two variables into one.
 
 ```{r}
+# Change NULL values("\\N") into NA
+# Since there's some weird character errors in the data, I have to use sapply()
+d1 <- as.data.frame(sapply(d1, gsub, pattern = "\\\\N *", replacement = NA))
+d3 <- as.data.frame(sapply(d3, gsub, pattern = "\\\\N *", replacement = NA))
+# d1[d1 == "\\N"] <- NA
+# d3[d3 == "\\N"] <- NA
+
 # Merge cells with some errors
 d1$V3 <- paste(d1$V3, d1$V30, sep = ""); d1$V30 <- NULL
 d3$V3 <- paste(d3$V3, d3$V30, sep = ""); d3$V30 <- NULL
-
-# Change NULL values("\\N") into NA
-# Since there's some weird character errors in the data, I have to use sapply()
-d1 <- as.data.frame(sapply(d1, gsub, pattern = "\\N", replacement = NA))
-d3 <- as.data.frame(sapply(d3, gsub, pattern = "\\N", replacement = NA))
-# d1[d1 == "\\N"] <- NA
-# d3[d3 == "\\N"] <- NA
 ```
 
 Combine d1 (first debate data) and d3 (third debate data) into d13
