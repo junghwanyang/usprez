@@ -1,21 +1,42 @@
 ---
-title: "02 Random sample for human coding"
+title: "02 Random sample for human coding and test ICR"
 author: "JungHwan Yang"
 date: "July 13, 2015"
 output: html_document
 ---
 
+#### Make a random sampled dataset
+
 For human coding, pick a random sample from the raw data set
 
 ```{r}
-library(dplyr)
-set.seed(7)
-d13.rdm10k <- sample_n(d13, 10000)
+# library(dplyr)
+# set.seed(7)
+# d13.rdm10k <- sample_n(d13, 10000)
 ```
 
 For distribution of the file, export it as .xls file
 
 ```{r}
-library(xlsx)
-write.xlsx(d13.rdm10k, file="../data/usprez13-rdm10k.xlsx")
+# library(xlsx)
+# write.xlsx(d13.rdm10k, file="../data/usprez13-rdm10k.xlsx")
+```
+
+#### Test intercoder reliability
+
+Three pairs of coders (total six coders) have coded either 300 or 500 tweets. Here's code to test intercoder reliability (ICR).
+
+To make it easier, I make a .csv file that contains six coders codings in a following form:
+
+| number | bs | mo | number | rk | yz | number | jy | md |
+|--------|----|----|--------|----|----|--------|----|----|
+|        |    |    |        |    |    |        |    |    |
+
+
+
+```{r}
+# coding100 <- read.csv("Data/korandom100coding.csv") # This file contains 48 tweets of the second round coding (63-110)
+# library(irr)
+# kripp.alpha(t(as.matrix(coding100[,])), method = "nominal")
+# # Alpha = .746, which isacceptable. So, coders coded other tweets.
 ```
