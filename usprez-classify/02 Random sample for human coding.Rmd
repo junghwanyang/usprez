@@ -61,3 +61,6 @@ kripp.alpha(t(as.matrix(coder1[,])), method = "nominal") # .59
 kripp.alpha(t(as.matrix(coder2[,])), method = "nominal") # .66
 kripp.alpha(t(as.matrix(coder3[,])), method = "nominal") # .75
 ```
+
+Since coder1 (Ben and Margarita) and coder2 (Rachel and Yini) showed low intercoder reliabiliy, I tried to code some of their tweets and test ICR among three coders.
+
