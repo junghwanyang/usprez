@@ -1,0 +1,66 @@
+---
+title: "02 Random sample for human coding and test ICR"
+author: "JungHwan Yang"
+date: "July 13, 2015"
+output: html_document
+---
+
+#### Make a random sampled dataset
+
+For human coding, pick a random sample from the raw data set
+
+```{r}
+# library(dplyr)
+# set.seed(7)
+# d13.rdm10k <- sample_n(d13, 10000)
+```
+
+For distribution of the file, export it as .xls file
+
+```{r}
+# library(xlsx)
+# write.xlsx(d13.rdm10k, file="../data/usprez13-rdm10k.xlsx")
+```
+
+#### Test intercoder reliability
+
+Three pairs of coders (total six coders) have coded either 300 or 500 tweets. Here's code to test intercoder reliability (ICR).
+
+To make it easier, I make a .csv file that contains six coders codings in a following form:
+
+| number | bs | mo | number | rk | yz | number | jy | md |
+|--------|----|----|--------|----|----|--------|----|----|
+|        |    |    |        |    |    |        |    |    |
+
+Test intercoder reliability of the first 500 tweets
+
+```{r}
+library(irr)
+us500coded <- read.csv("..//humancoding/first500codings/usprez500coded.csv")
+
+coder1 <- us500coded[1:499, c(2:3)]
+coder2 <- us500coded[1:337, c(5:6)]
+coder3 <- us500coded[1:500, c(8:9)]
+
+kripp.alpha(t(as.matrix(coder1[,])), method = "nominal")
+kripp.alpha(t(as.matrix(coder2[,])), method = "nominal")
+kripp.alpha(t(as.matrix(coder3[,])), method = "nominal")
+
+```
+
+Test intercoder reliability of the second 300 tweet
+
+```{r}
+us300coded <- read.csv("..//humancoding/second300codings/usprez300coded2nd.csv")
+
+coder1 <- us300coded[1:300, c(2:3)]
+coder2 <- us300coded[1:299, c(5:6)]
+coder3 <- us300coded[1:300, c(8:9)]
+
+kripp.alpha(t(as.matrix(coder1[,])), method = "nominal") # .59
+kripp.alpha(t(as.matrix(coder2[,])), method = "nominal") # .66
+kripp.alpha(t(as.matrix(coder3[,])), method = "nominal") # .75
+```
+
+Since coder1 (Ben and Margarita) and coder2 (Rachel and Yini) showed low intercoder reliabiliy, I tried to code some of their tweets and test ICR among three coders.
+
