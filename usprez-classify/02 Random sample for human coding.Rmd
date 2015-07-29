@@ -32,7 +32,7 @@ To make it easier, I make a .csv file that contains six coders codings in a foll
 |--------|----|----|--------|----|----|--------|----|----|
 |        |    |    |        |    |    |        |    |    |
 
-
+Test intercoder reliability of the first 500 tweets
 
 ```{r}
 library(irr)
@@ -43,6 +43,21 @@ coder2 <- us500coded[1:337, c(5:6)]
 coder3 <- us500coded[1:500, c(8:9)]
 
 kripp.alpha(t(as.matrix(coder1[,])), method = "nominal")
+kripp.alpha(t(as.matrix(coder2[,])), method = "nominal")
+kripp.alpha(t(as.matrix(coder3[,])), method = "nominal")
+
+```
+
+Test intercoder reliability of the second 300 tweet
+
+```{r}
+us300coded <- read.csv("..//humancoding/second300codings/usprez300coded2nd.csv")
+
+#coder1 <- us300coded[1:499, c(2:3)]
+coder2 <- us300coded[1:299, c(5:6)]
+coder3 <- us300coded[1:300, c(8:9)]
+
+#kripp.alpha(t(as.matrix(coder1[,])), method = "nominal")
 kripp.alpha(t(as.matrix(coder2[,])), method = "nominal")
 kripp.alpha(t(as.matrix(coder3[,])), method = "nominal")
 
