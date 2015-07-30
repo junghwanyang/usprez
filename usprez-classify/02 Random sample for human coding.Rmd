@@ -57,10 +57,28 @@ coder1 <- us300coded[1:300, c(2:3)]
 coder2 <- us300coded[1:299, c(5:6)]
 coder3 <- us300coded[1:300, c(8:9)]
 
-kripp.alpha(t(as.matrix(coder1[,])), method = "nominal") # .59
-kripp.alpha(t(as.matrix(coder2[,])), method = "nominal") # .66
-kripp.alpha(t(as.matrix(coder3[,])), method = "nominal") # .75
+kripp.alpha(t(as.matrix(coder1[,])), method = "nominal") # .59 Ben & Margarita
+kripp.alpha(t(as.matrix(coder2[,])), method = "nominal") # .66 Rachel & Yini
+kripp.alpha(t(as.matrix(coder3[,])), method = "nominal") # .75 Megan & J
 ```
 
 Since coder1 (Ben and Margarita) and coder2 (Rachel and Yini) showed low intercoder reliabiliy, I tried to code some of their tweets and test ICR among three coders.
 
+```{r}
+us300coded3coders <- 
+  read.csv("..//humancoding/second300codings/usprez300coded2nd-3coders.csv")
+
+coder1.1 <- us300coded3coders[1:200, c(2:4)]
+coder1.2 <- us300coded3coders[1:200, c(2, 4)]
+coder1.3 <- us300coded3coders[1:200, c(3, 4)]
+kripp.alpha(t(as.matrix(coder1.1[,])), method = "nominal") # .69 Ben, Margarita, & J
+kripp.alpha(t(as.matrix(coder1.2[,])), method = "nominal") # .80 Ben & J
+kripp.alpha(t(as.matrix(coder1.3[,])), method = "nominal") # .69 Margarita & J
+
+coder2.1 <- us300coded3coders[1:200, c(6:8)]
+coder2.2 <- us300coded3coders[1:200, c(6, 8)]
+coder2.3 <- us300coded3coders[1:200, c(7, 8)]
+kripp.alpha(t(as.matrix(coder2.1[,])), method = "nominal") # .71 Rachel, Yini, & J
+kripp.alpha(t(as.matrix(coder2.2[,])), method = "nominal") # .73 Rachel & J
+kripp.alpha(t(as.matrix(coder2.3[,])), method = "nominal") # .75 Yini & J
+```
